@@ -12,6 +12,7 @@ class TPQueue {
     };
     Node* head;
     Node* tail;
+    
  public:
     TPQueue() : head(nullptr), tail(nullptr) {}
     ~TPQueue() {
@@ -30,7 +31,7 @@ class TPQueue {
                 tail = head;
             }
             return;
-        } 
+        }
         Node* current = head;
         while (current->next && current->next->data.prior >= item.prior) {
             current = current->next;
