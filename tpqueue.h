@@ -66,6 +66,3 @@ struct SYM {
 };
 
 #endif  // INCLUDE_TPQUEUE_H_
-
-
-
