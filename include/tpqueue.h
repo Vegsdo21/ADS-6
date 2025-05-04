@@ -16,7 +16,8 @@ class TPQueue {
         T data;
         Node* next;
 
-        explicit Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
+        explicit Node(const T& data, Node* next = nullptr)
+              : data(data), next(next) {}
     };
 
     Node* head;
@@ -68,5 +69,6 @@ class TPQueue {
         return data;
     }
 
-    bool empty() const { return head == nullptr; }
+    bool empty() const { return head == nullptr; };
 }
+#endif 
