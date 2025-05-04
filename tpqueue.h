@@ -1,4 +1,9 @@
-// Файл include/tpqueue.h
+// Copyright 2022 NNTU-CS
+
+struct SYM {
+  char ch;
+  int prior;
+};
 
 template<typename T>
 class TPQueue {
@@ -6,10 +11,13 @@ private:
     struct Node {
         T data;
         Node* next;
+
         Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
     };
+
     Node* head;
     Node* tail;
+
 public:
     TPQueue() : head(nullptr), tail(nullptr) {}
     ~TPQueue() {
@@ -19,41 +27,50 @@ public:
             delete temp;
         }
     }
+
     void push(const T& item) {
         Node* newNode = new Node(item);
+
         if (!head || item.prior > head->data.prior) {
             newNode->next = head;
             head = newNode;
-            if (!tail) {
-                tail = head;
-            }
+            if (!tail) tail = head;
             return;
         }
+
         Node* current = head;
         while (current->next && current->next->data.prior >= item.prior) {
-            current = current->next;
+        current = current->next;
         }
         newNode->next = current->next;
         current->next = newNode;
-        
+
         if (!newNode->next) {
             tail = newNode;
         }
     }
+
     T pop() {
-        if (!head) {
-            throw "Queue is empty";
+        if (empty()) {
+          throw std::underflow_error("TPQueue is empty");
         }
+        
         Node* temp = head;
-        T data = temp->data;
+        T data = head->data;
         head = head->next;
+        
         if (!head) {
-            tail = nullptr;
+          tail = nullptr;
         }
+        
         delete temp;
+        size--;
         return data;
     }
-    bool isEmpty() const {
-        return head == nullptr;
-    }
-};
+
+    bool empty() const { return head == nullptr; }
+
+
+
+
+}
