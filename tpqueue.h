@@ -34,6 +34,7 @@ class TPQueue {
         Node* newNode = new Node(item);
 
         if (!head || item.prior > head->data.prior) {
+          
             newNode->next = head;
             head = newNode;
             if (!tail) tail = head;
