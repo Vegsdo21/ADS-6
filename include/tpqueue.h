@@ -69,6 +69,6 @@ class TPQueue {
         return data;
     }
 
-    bool empty() const { return head == nullptr; };
-}
-#endif 
+    bool empty() const { return head == nullptr; }
+};
+#endif  // INCLUDE_TPQUEUE_H_
