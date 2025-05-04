@@ -1,4 +1,7 @@
 // Copyright 2022 NNTU-CS
+#ifndef INCLUDE_TPQUEUE_H_
+#define INCLUDE_TPQUEUE_H_
+
 #include <stdexcept>
 
 struct SYM {
@@ -13,7 +16,7 @@ class TPQueue {
         T data;
         Node* next;
 
-        Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
+        explicit Node(const T& data, Node* next = nullptr) : data(data), next(next) {}
     };
 
     Node* head;
@@ -33,7 +36,6 @@ class TPQueue {
         Node* newNode = new Node(item);
 
         if (!head || item.prior > head->data.prior) {
-          
             newNode->next = head;
             head = newNode;
             if (!tail) tail = head;
