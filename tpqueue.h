@@ -56,15 +56,12 @@ class TPQueue {
         if (empty()) {
           throw std::underflow_error("TPQueue is empty");
         }
-        
         Node* temp = head;
         T data = head->data;
         head = head->next;
-        
         if (!head) {
           tail = nullptr;
         }
-        
         delete temp;
         size--;
         return data;
