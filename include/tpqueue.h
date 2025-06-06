@@ -10,7 +10,7 @@ class TPQueue {
   struct Cell {
     T content;
     Cell* link;
-    Cell(const T& c, Cell* lnk = nullptr) : content(c), link(lnk) {}
+    explicit Cell(const T& c, Cell* lnk = nullptr) : content(c), link(lnk) {}
   };
 
   Cell* begin;
